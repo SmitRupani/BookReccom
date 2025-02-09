@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Organizer & Recommendation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>📚 Book Organizer & Recommendation</h1>
+        <input type="text" id="search-bar" placeholder="Search books...">
+        <button onclick="searchBooks()">🔍 Search</button>
+        <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+        <button onclick="clearLibrary()">🗑️ Clear Library</button>
+    </header>
+
+    <div id="loading" style="display: none; text-align: center; padding: 1rem;">
+        ⏳ Loading your library...
+    </div>
+
+    <main>
+        <section id="search-results">
+            <div class="search-header-wrapper">
+                <h2>Search Results</h2>
+            </div>
+            <div id="book-list"></div>
+        </section>
+
+        <section id="library">
+            <h2>My Library</h2>
+            <div class="shelves">
+                <div class="shelf">
+                    <h3>📖 To Read</h3>
+                    <div id="to-read" class="book-shelf"></div>
+                </div>
+                <div class="shelf">
+                    <h3>📚 Reading</h3>
+                    <div id="reading" class="book-shelf"></div>
+                </div>
+                <div class="shelf">
+                    <h3>✅ Finished</h3>
+                    <div id="finished" class="book-shelf"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
