@@ -11,7 +11,7 @@ function searchBooks() {
     // const loading = document.getElementById('loading');
     // loading.style.display = 'block';
 
-    localStorage.setItem('lastSearch', query);
+    // localStorage.setItem('lastSearch', query);
 
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
         .then(response => response.json())
@@ -20,6 +20,7 @@ function searchBooks() {
                 displaySearchResults(data.items);
             } else {
                 alert("No books found for your search.");
+                document.getElementById('book-list').innerHTML = '';
             }
         })
         .catch(error => console.log("Error fetching books: ", error))
