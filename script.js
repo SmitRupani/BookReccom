@@ -9,7 +9,7 @@ function searchBooks() {
     if (!query) return;
 
     // const loading = document.getElementById('loading');
-    // loading.style.display = 'block'; // Show loader
+    // loading.style.display = 'block';
 
     localStorage.setItem('lastSearch', query);
 
@@ -133,21 +133,18 @@ function clearLibrary() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Show loading indicator for library
-    const loading = document.getElementById('loading');
-    loading.style.display = 'block';
+    // const loading = document.getElementById('loading');
+    // loading.style.display = 'block';
     
-    // Load library first
     displayLibrary();
     
-    // Then handle search history
     const lastSearch = localStorage.getItem('lastSearch');
     if (lastSearch) {
         document.getElementById('search-bar').value = lastSearch;
         searchBooks();
     }
     
-    loading.style.display = 'none';
+    // loading.style.display = 'none';
 });
 
 function toggleDarkMode() {
@@ -177,7 +174,6 @@ function displaySearchResults(books) {
 function displayLibrary() {
     const library = JSON.parse(localStorage.getItem('library')) || [];
     
-    // Clear all shelves first
     ['to-read', 'reading', 'finished'].forEach(shelfId => {
         document.getElementById(shelfId).innerHTML = '';
     });
@@ -227,14 +223,12 @@ function getActionButtons(book) {
     `).join('') + `<button onclick="removeFromLibrary('${book.id}')">❌ Remove</button>`;
 }
 
-// Add this new function for auto-completion
 function checkAutoComplete(bookId, progress) {
     if (parseInt(progress) === 100) {
         moveBook(bookId, 'finished');
     }
 }
 
-// Modify the updateProgress function
 function updateProgress(id, progress) {
     let library = JSON.parse(localStorage.getItem('library')) || [];
     let book = library.find(b => b.id === id);
@@ -242,21 +236,20 @@ function updateProgress(id, progress) {
         progress = Math.max(0, Math.min(100, progress));
         book.progress = progress;
         localStorage.setItem('library', JSON.stringify(library));
-        checkAutoComplete(id, progress); // Check for auto-completion
+        checkAutoComplete(id, progress); 
         displayLibrary();
     }
 }
 
-// Update the progress container in displayLibrary
-// In the reading shelf section, modify to:
-bookItem.innerHTML += `
-    <div class="progress-container">
-        <input type="range" min="0" max="100" value="${book.progress}" 
-               onchange="updateProgress('${book.id}', this.value)">
-        <span>${book.progress}%</span>
-    </div>
-    ${book.progress === 100 ? '<div class="complete-badge">Complete! 🎉</div>' : ''}
-`;
+
+// bookItem.innerHTML += `
+//     <div class="progress-container">
+//         <input type="range" min="0" max="100" value="${book.progress}" 
+//                onchange="updateProgress('${book.id}', this.value)">
+//         <span>${book.progress}%</span>
+//     </div>
+//     ${book.progress === 100 ? '<div class="complete-badge">Complete! 🎉</div>' : ''}
+// `;
 
 function getActionButtons(book) {
     const statusActions = {
