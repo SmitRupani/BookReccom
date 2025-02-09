@@ -139,11 +139,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     displayLibrary();
     
-    const lastSearch = localStorage.getItem('lastSearch');
-    if (lastSearch) {
-        document.getElementById('search-bar').value = lastSearch;
-        searchBooks();
-    }
+    // const lastSearch = localStorage.getItem('lastSearch');
+    // if (lastSearch) {
+    //     document.getElementById('search-bar').value = lastSearch;
+    //     searchBooks();
+    // }
     
     // loading.style.display = 'none';
 });
