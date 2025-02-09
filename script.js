@@ -264,10 +264,10 @@ function getActionButtons(book) {
       .join('') + `<button onclick="removeFromLibrary('${book.id}')">❌ Remove</button>`;
   }
 
-  function loadSearchFromStorage() {
-    const lastSearch = localStorage.getItem('lastSearch');
-    if (lastSearch) {
-        document.getElementById('search-bar').value = lastSearch;
-        searchBooks();
-    }
-}
+//   function loadSearchFromStorage() {
+//     const lastSearch = localStorage.getItem('lastSearch');
+//     if (lastSearch) {
+//         document.getElementById('search-bar').value = lastSearch;
+//         searchBooks();
+//     }
+// }
